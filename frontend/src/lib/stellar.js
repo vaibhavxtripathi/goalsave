@@ -1,8 +1,8 @@
 import * as StellarSdk from '@stellar/stellar-sdk'
 import { isConnected, getPublicKey, signTransaction } from '@stellar/freighter-api'
 
-const CONTRACT_ID = import.meta.env.VITE_CONTRACT_ID
-const XLM_TOKEN   = import.meta.env.VITE_XLM_TOKEN
+const CONTRACT_ID = (import.meta.env.VITE_CONTRACT_ID || '').trim()
+const XLM_TOKEN   = (import.meta.env.VITE_XLM_TOKEN || '').trim()
 const NET         = import.meta.env.VITE_NETWORK_PASSPHRASE || 'Test SDF Network ; September 2015'
 const RPC_URL     = import.meta.env.VITE_SOROBAN_RPC_URL    || 'https://soroban-testnet.stellar.org'
 const DUMMY       = 'GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN'
@@ -70,7 +70,7 @@ async function approveXlm(publicKey, stroops) {
     StellarSdk.Address.fromString(publicKey).toScVal(),
     StellarSdk.Address.fromString(CONTRACT_ID).toScVal(),
     new StellarSdk.XdrLargeInt('i128', BigInt(stroops)).toI128(),
-    StellarSdk.xdr.ScVal.scvU32(99_999_999),
+    StellarSdk.xdr.ScVal.scvU32(3_110_400),
   ))
 }
 
