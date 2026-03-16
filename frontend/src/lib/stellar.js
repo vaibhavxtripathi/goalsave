@@ -177,3 +177,4 @@ export function ledgersToDays(ledgers) {
 }
 
 export { CONTRACT_ID }
+
