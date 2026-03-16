@@ -33,7 +33,7 @@ async function sendTx(publicKey, op) {
 
   const prepared = StellarSdk.rpc.assembleTransaction(tx, sim).build()
   // Freighter v1.7.1 — returns XDR string directly
-  const signedXdr = await signTransaction(prepared.toXDR(), { networkPassphrase: NET })
+  const signedXdr = await signTransaction(prepared.toXDR(), { networkPassphrase: NET, network: 'TESTNET' })
   const signed = StellarSdk.TransactionBuilder.fromXDR(signedXdr, NET)
   const result = await rpc.sendTransaction(signed)
 
